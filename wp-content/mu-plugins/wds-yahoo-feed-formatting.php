@@ -160,13 +160,13 @@ function wds_acme_get_syndication_feed_content( $content, $post = null, $feed_ty
 		return $content;
 	}
 
-	$root = $document->getElementById( 'wds-feed-root' );
+	$xpath      = new DOMXPath( $document );
+	$root_nodes = $xpath->query( "//*[@id='wds-feed-root']" );
+	$root       = ( $root_nodes && $root_nodes->length > 0 ) ? $root_nodes->item( 0 ) : null;
 
 	if ( ! $root ) {
 		return $content;
 	}
-
-	$xpath = new DOMXPath( $document );
 
 	wds_acme_remove_syndication_comment_nodes( $xpath );
 	wds_acme_normalize_syndication_images( $document, $xpath );
