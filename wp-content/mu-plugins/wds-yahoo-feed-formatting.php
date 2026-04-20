@@ -22,7 +22,7 @@ function wds_acme_is_target_syndication_feed() {
 
 	$feed = get_query_var( 'feed' );
 
-	return empty( $feed ) || 'rss2' === $feed || 'alt' === $feed;
+	return empty( $feed ) || 'feed' === $feed || 'rss2' === $feed || 'alt' === $feed;
 }
 
 /**
